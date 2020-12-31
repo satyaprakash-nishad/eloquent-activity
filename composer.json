@@ -1,0 +1,19 @@
+{
+    "name": "satya/eloquent-activity",
+    "description": "This will manage the eloquent activity and save to database",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "satyaprakash",
+            "email": "satyaprakash.nishad@outlook.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Satya\\EloquentActivity\\": "src/"
+        }
+    }
+}
