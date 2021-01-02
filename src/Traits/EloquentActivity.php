@@ -41,7 +41,7 @@ trait EloquentActivity{
      * @param  Model  $model
      * @return string
      */
-    public static function getTagName(Model $model)
+    private static function getTagName(Model $model)
     {
         return !empty($model->tagName) ? $model->tagName : Str::title(Str::snake(class_basename($model), ' '));
     }
@@ -50,7 +50,7 @@ trait EloquentActivity{
      * Retrieve the current login user id
      * @return int|string|null
      */
-    public static function activeUserId()
+    private static function activeUserId()
     {
         return Auth::guard(static::activeUserGuard())->id();
     }
@@ -59,7 +59,7 @@ trait EloquentActivity{
      * Retrieve the current login user guard name
      * @return mixed|null
      */
-    public static function activeUserGuard()
+    private static function activeUserGuard()
     {
         $guardName = 'web';
         foreach (array_keys(config('auth.guards')) as $guard) {
@@ -77,7 +77,7 @@ trait EloquentActivity{
      * @param $modelPath
      * @param $action
      */
-    public static function storeLog($model, $modelPath, $action)
+    private static function storeLog($model, $modelPath, $action)
     {
 
         $newValues = null;
