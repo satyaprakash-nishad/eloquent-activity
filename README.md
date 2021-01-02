@@ -53,7 +53,7 @@ class VendorCenter extends Model
 }
 ```
 
-##Retrive App Activity
+## Retrive App Activity
 For retrieving app activity just use the Satya\EloquentActivity\Model\Eloquent Activity model.
 
 ```
