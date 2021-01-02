@@ -104,4 +104,14 @@ trait EloquentActivity{
         $systemLog->ip_address = request()->ip();
         $systemLog->save();
     }
+    
+    
+    /**
+     *Specific record history
+     * @return mixed
+     */
+    public function recordHistory()
+    {
+        return $this->morphMany(EAModel::class, 'system_logable');
+    }
 }
