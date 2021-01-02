@@ -26,4 +26,13 @@ class EloquentActivity extends Model
         'new_value',
         'ip_address'
     ];
+    
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function system_logable()
+    {
+        return $this->morphTo();
+    }
 }
