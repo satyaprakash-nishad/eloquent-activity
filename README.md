@@ -1,11 +1,13 @@
+## Laravel Eloquent Activity Manage Package
+This will manage the eloquent activity and save to database and developer can be easily manage the laravel app activity.
+
 ## Installation
 Package installation using composer
 ```
 composer require satya/eloquent-activity
 ```
-```
 Register service provider in your config/app.php file:
-```
+
 ```
 'providers' => [
     // ...
@@ -13,8 +15,8 @@ Register service provider in your config/app.php file:
 ];
 ```
 
-## Run the migrations:
-```
+Run the migrations:
+```php
 php artisan migrate
 ```
 
@@ -53,8 +55,8 @@ class VendorCenter extends Model
 }
 ```
 
-## Retrive App Activity
-For retrieving app activity just use the Satya\EloquentActivity\Model\Eloquent Activity model.
+## Retrieve App Activity
+For retrieving app activity just use the Satya\EloquentActivity\Model\EloquentActivity model.
 
 ```
 use Satya\EloquentActivity\Model\EloquentActivity;
@@ -69,8 +71,56 @@ class VendorCenterController extends Controller
 }
 ```
 
+## Example to retrieving specific record history
+This package has features to view the specific record history by calling the recordHistory morphMany relationship method.
 
-## How to Implement Eloquent Activity Features without Package.
-Below link of article is helpfull to implement this package fetures on your Laravel app without any package.
+* Controller 
+    ```php
+     /**
+         * @param $id
+         */
+        public function history($id){
+            $client = Client::where('id',$id)->first();
+            if (!empty($client))
+            {
+                dump($client);
+                dd($client->recordHistory->toArray());
+            }
+        }
+    ``` 
+* Model 
+    ```php
+    <?php
+    
+    namespace App\Models;
+    
+    use Illuminate\Database\Eloquent\Model;
+    use Satya\EloquentActivity\Traits\EloquentActivity;
+    
+    class Client extends Model
+    {
+        use EloquentActivity;
+    
+        /**
+         * @var string
+         */
+        protected $table = 'clients';
+    
+    
+        /**
+         * @var string[]
+         */
+        protected $fillable = [
+            'first_name',
+            'last_name'
+        ];
+    }
+    
+    ```
+* Result
+    <img src="src/images/rsrh.png">
 
-Link:- https://satyaprakash-nishad.medium.com/laravel-model-custom-logs-with-traits-89a246d8bf1c
+## How to Implement Eloquent Activity Features without Package. 
+Below link of article is helpful to implement this package features on your Laravel app without any package.
+
+Link:-   https://satyaprakash-nishad.medium.com/laravel-model-custom-logs-with-traits-89a246d8bf1c
