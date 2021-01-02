@@ -1,3 +1,5 @@
+<img src="src/images/main_image.png" alt="Laravel Eloquent Activity Manage Package">
+
 ## Laravel Eloquent Activity Manage Package
 This will manage the eloquent activity and save to database and developer can be easily manage the laravel app activity.
 
